@@ -169,6 +169,8 @@ URL: http://localhost:5000/api/products
 Eliminar un producto
 Método: DELETE
 URL: http://localhost:5000/api/products/ID_DEL_PRODUCTO // Reemplaza con el ID real del producto
+
+
 Estructura del proyecto
 lua
 Copiar
