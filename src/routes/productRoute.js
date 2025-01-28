@@ -1,12 +1,12 @@
 const express = require("express");
-const productController = require("../controllers/productController"); // Corregido con la ruta relativa
+const productController = require("../controllers/productController"); 
 
 const router = express.Router();
 
-router.post("/", productController.createProduct); // Crear producto
-router.get("/", productController.getAllProducts); // Listar productos
-router.get("/:id", productController.getProductById); // Obtener producto por ID
-router.put("/:id", productController.updateProduct); // Actualizar producto
-router.delete("/:id", productController.deleteProduct); // Eliminar producto
+router.post("/", productController.createProduct); 
+router.get("/", productController.getAllProducts); 
+router.get("/:id", productController.getProductById); 
+router.put("/:id", productController.updateProduct); 
+router.delete("/:id", productController.deleteProduct); 
 
 module.exports = router;
