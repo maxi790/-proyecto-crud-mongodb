@@ -1,11 +1,11 @@
-Proyecto CRUD con MongoDB
+#                                                                                    Proyecto CRUD con MongoDB
 Descripción
 Este proyecto es una API RESTful que permite realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) sobre productos y categorías utilizando Node.js, Express, MongoDB y Mongoose.
 
 La aplicación está diseñada para gestionar productos, permitiendo crear nuevos productos, listarlos, actualizar su información y eliminarlos. Además, permite gestionar categorías asociadas a cada producto.
 
 
-Tecnologías Utilizadas
+# Tecnologías Utilizadas
 
 Node.js: Entorno de ejecución de JavaScript para el lado del servidor.
 
@@ -19,7 +19,7 @@ Postman (opcional): Herramienta para probar las API REST.
 
 Instrucciones para Ejecutar el Proyecto
 
-1. Clonar el repositorio
+# 1. Clonar el repositorio
 
 Clona este repositorio a tu máquina local utilizando el siguiente comando:
 
@@ -28,7 +28,7 @@ Copiar
 git clone https://github.com/tu_usuario/proyecto-crud-mongodb.git
 
 
-2. Instalar las dependencias
+# 2. Instalar las dependencias
 Dirígete al directorio del proyecto y ejecuta el siguiente comando para instalar las dependencias necesarias:
 
 bash
@@ -37,7 +37,7 @@ cd proyecto-crud-mongodb
 npm install
 
 
-3. Configurar MongoDB
+# 3. Configurar MongoDB
 Asegúrate de tener MongoDB instalado y en funcionamiento. Si no tienes MongoDB en tu máquina local, puedes utilizar MongoDB Compass o una instancia de MongoDB en la nube como MongoDB Atlas.
 
 En tu archivo app.js, asegúrate de que la URL de conexión de MongoDB sea la correcta. Por ejemplo:
@@ -50,7 +50,7 @@ mongoose.connect('mongodb://localhost:27017/mi-base-de-datos', {
 });
 
 
-4. Ejecutar la aplicación
+# 4. Ejecutar la aplicación
 Para iniciar el servidor, ejecuta el siguiente comando:
 
 bash
@@ -58,7 +58,7 @@ Copiar
 npm start
 La aplicación estará corriendo en el puerto 5000 (o el puerto que hayas configurado) y la URL será http://localhost:5000.
 
-Endpoints Disponibles
+# Endpoints Disponibles
 Productos
 
 POST /api/products: Crear un nuevo producto
@@ -71,7 +71,7 @@ PUT /api/products/:id: Actualizar un producto
 
 DELETE /api/products/:id: Eliminar un producto
 
-Categorías
+# Categorías
 
 POST /api/categories: Crear una nueva categoría
 
@@ -83,7 +83,7 @@ PUT /api/categories/:id: Actualizar una categoría
 
 DELETE /api/categories/:id: Eliminar una categoría
 
-Ejemplos de Datos Mock para POST
+# Ejemplos de Datos Mock para POST
 
 Crear Producto (POST /api/products)
 
@@ -115,7 +115,7 @@ Copiar
 	"description": "Productos electrónicos como teléfonos, computadoras, etc."
 }
 
-Contribuciones
+# Contribuciones
 
 Si deseas contribuir a este proyecto, sigue estos pasos:
 
