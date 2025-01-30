@@ -1,9 +1,8 @@
-const Category = require("../models/categoryModel"); // Asegúrate de tener el modelo de categoría
+const Category = require("../models/categoryModel"); 
 
-// Crear una nueva categoría
 exports.createCategory = async (req, res) => {
     try {
-        const newCategory = new Category(req.body); // Asegúrate de que req.body tenga los datos necesarios
+        const newCategory = new Category(req.body); 
         await newCategory.save();
         res.status(201).json(newCategory);
     } catch (error) {
@@ -11,7 +10,7 @@ exports.createCategory = async (req, res) => {
     }
 };
 
-// Obtener todas las categorías
+
 exports.getCategories = async (req, res) => {
     try {
         const categories = await Category.find();
@@ -21,7 +20,7 @@ exports.getCategories = async (req, res) => {
     }
 };
 
-// Obtener una categoría por ID
+
 exports.getCategoryById = async (req, res) => {
     try {
         const category = await Category.findById(req.params.id);
@@ -34,7 +33,7 @@ exports.getCategoryById = async (req, res) => {
     }
 };
 
-// Actualizar una categoría
+
 exports.updateCategory = async (req, res) => {
     try {
         const updatedCategory = await Category.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -47,7 +46,7 @@ exports.updateCategory = async (req, res) => {
     }
 };
 
-// Eliminar una categoría
+
 exports.deleteCategory = async (req, res) => {
     try {
         const deletedCategory = await Category.findByIdAndDelete(req.params.id);
