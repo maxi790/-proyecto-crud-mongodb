@@ -1,191 +1,129 @@
-
-
-Proyecto CRUD MongoDB
+#                                                                                    Proyecto CRUD con MongoDB
 Descripción
-Este proyecto es una API RESTful para la gestión de productos y categorías, utilizando Node.js, Express, MongoDB y Mongoose. Permite crear, leer, actualizar y eliminar productos, y asociarlos con categorías.
+Este proyecto es una API RESTful que permite realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) sobre productos y categorías utilizando Node.js, Express, MongoDB y Mongoose.
 
-Los productos están asociados a categorías, lo que permite tener una estructura organizada de datos. Los usuarios pueden interactuar con los productos a través de los endpoints de la API.
+La aplicación está diseñada para gestionar productos, permitiendo crear nuevos productos, listarlos, actualizar su información y eliminarlos. Además, permite gestionar categorías asociadas a cada producto.
 
-Tecnologías
-Node.js: Entorno de ejecución de JavaScript.
-Express.js: Framework web para Node.js.
-MongoDB: Base de datos NoSQL.
-Mongoose: ODM (Object Data Modeling) para MongoDB en Node.js.
-Postman/Insomnia: Herramientas para probar los endpoints de la API.
 
-Cómo correr el proyecto
-1. Clonar el repositorio
-Primero, clona el repositorio en tu máquina local:
+# Tecnologías Utilizadas
+
+Node.js: Entorno de ejecución de JavaScript para el lado del servidor.
+
+Express: Framework web para Node.js para manejar las rutas y solicitudes HTTP.
+
+MongoDB: Base de datos NoSQL para almacenar los datos de los productos y categorías.
+
+Mongoose: Librería de modelado de datos para MongoDB en Node.js, facilitando la interacción con la base de datos.
+
+Postman (opcional): Herramienta para probar las API REST.
+
+Instrucciones para Ejecutar el Proyecto
+
+# 1. Clonar el repositorio
+
+Clona este repositorio a tu máquina local utilizando el siguiente comando:
 
 bash
 Copiar
-git clone https://github.com/tu_usuario/tu_repositorio.git
-cd tu_repositorio
+git clone https://github.com/tu_usuario/proyecto-crud-mongodb.git
 
-2. Instalar dependencias
-Instala las dependencias necesarias utilizando npm:
+
+# 2. Instalar las dependencias
+Dirígete al directorio del proyecto y ejecuta el siguiente comando para instalar las dependencias necesarias:
 
 bash
 Copiar
+cd proyecto-crud-mongodb
 npm install
 
-3. Configurar la base de datos
-Asegúrate de tener MongoDB instalado y corriendo en tu máquina local o utiliza MongoDB Atlas para tener una base de datos en la nube. Si usas MongoDB Atlas, actualiza la URI de conexión en el archivo app.js.
 
-Si usas MongoDB localmente, la URI de conexión por defecto debería ser:
+# 3. Configurar MongoDB
+Asegúrate de tener MongoDB instalado y en funcionamiento. Si no tienes MongoDB en tu máquina local, puedes utilizar MongoDB Compass o una instancia de MongoDB en la nube como MongoDB Atlas.
 
-bash
+En tu archivo app.js, asegúrate de que la URL de conexión de MongoDB sea la correcta. Por ejemplo:
+
+js
 Copiar
-mongodb://localhost:27017/tu_basededatos
+mongoose.connect('mongodb://localhost:27017/mi-base-de-datos', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
-4. Correr el servidor
-Una vez que todo esté configurado, corre el servidor con el siguiente comando:
+
+# 4. Ejecutar la aplicación
+Para iniciar el servidor, ejecuta el siguiente comando:
 
 bash
 Copiar
 npm start
-El servidor debería estar corriendo en http://localhost:5000.
+La aplicación estará corriendo en el puerto 5000 (o el puerto que hayas configurado) y la URL será http://localhost:5000.
 
-Endpoints
-1. Crear una categoría
-Método: POST
-Ruta: /api/categories
-Descripción: Crea una nueva categoría.
-Cuerpo de la solicitud (JSON):
+# Endpoints Disponibles
+Productos
+
+POST /api/products: Crear un nuevo producto
+
+GET /api/products: Obtener todos los productos
+
+GET /api/products/:id: Obtener un producto por su ID
+
+PUT /api/products/:id: Actualizar un producto
+
+DELETE /api/products/:id: Eliminar un producto
+
+# Categorías
+
+POST /api/categories: Crear una nueva categoría
+
+GET /api/categories: Obtener todas las categorías
+
+GET /api/categories/:id: Obtener una categoría por su ID
+
+PUT /api/categories/:id: Actualizar una categoría
+
+DELETE /api/categories/:id: Eliminar una categoría
+
+# Ejemplos de Datos Mock para POST
+
+Crear Producto (POST /api/products)
 
 json
+
 Copiar
+
 {
-  "name": "Electronics"
-}
-Respuesta de ejemplo:
 
-json
-Copiar
-{
-  "_id": "60c72b2f5f5b2a001f6c2c85",
-  "name": "Electronics",
-  "__v": 0
-}
-
-2. Listar todas las categorías
-Método: GET
-Ruta: /api/categories
-Descripción: Obtiene todas las categorías.
-Respuesta de ejemplo:
-
-json
-Copiar
-[
-  {
-    "_id": "60c72b2f5f5b2a001f6c2c85",
-    "name": "Electronics",
-    "__v": 0
-  }
-]
-
-3. Crear un producto
-Método: POST
-Ruta: /api/products
-Descripción: Crea un nuevo producto asociado a una categoría.
-Cuerpo de la solicitud (JSON):
-
-json
-Copiar
-{
-  "name": "Laptop",
-  "price": 1000,
-  "categoryId": "60c72b2f5f5b2a001f6c2c85"  // ID de una categoría existente
-}
-Respuesta de ejemplo:
-
-json
-Copiar
-{
-  "_id": "60c72d5c8c8b8b001f6c2c86",
-  "name": "Laptop",
-  "price": 1000,
-  "category": "60c72b2f5f5b2a001f6c2c85",
-  "__v": 0
+	"name": "Producto Ejemplo",
+  
+	"price": 150,
+  
+	"description": "Descripción del producto ejemplo",
+  
+	"category": "605c72ef1532073ff597f7f"  // ID de categoría existente
 }
 
-4. Listar todos los productos
-Método: GET
-Ruta: /api/products
-Descripción: Obtiene todos los productos.
-Respuesta de ejemplo:
+Crear Categoría (POST /api/categories)
 
 json
-Copiar
-[
-  {
-    "_id": "60c72d5c8c8b8b001f6c2c86",
-    "name": "Laptop",
-    "price": 1000,
-    "category": {
-      "_id": "60c72b2f5f5b2a001f6c2c85",
-      "name": "Electronics",
-      "__v": 0
-    },
-    "__v": 0
-  }
-]
 
-5. Eliminar un producto
-Método: DELETE
-Ruta: /api/products/:id
-Descripción: Elimina un producto por su ID.
-Respuesta de ejemplo:
-
-json
 Copiar
+
 {
-  "message": "Product deleted successfully"
-}
-Comandos para probar la aplicación
-Crear una categoría
-Método: POST
-URL: http://localhost:5000/api/categories
-Cuerpo de la solicitud:
-json
-Copiar
-{
-  "name": "Books"
-}
-Crear un producto
-Método: POST
-URL: http://localhost:5000/api/products
-Cuerpo de la solicitud:
-json
-Copiar
-{
-  "name": "The Great Gatsby",
-  "price": 15.99,
-  "categoryId": "ID_DE_LA_CATEGORÍA"  // Reemplaza con el ID real de la categoría
-}
-Listar productos
-Método: GET
-URL: http://localhost:5000/api/products
-Eliminar un producto
-Método: DELETE
-URL: http://localhost:5000/api/products/ID_DEL_PRODUCTO // Reemplaza con el ID real del producto
 
+	"name": "Electrónica",
+  
+	"description": "Productos electrónicos como teléfonos, computadoras, etc."
+}
 
-Estructura del proyecto
-lua
-Copiar
-├── src
-│   ├── controllers
-│   │   ├── categoryController.js
-│   │   └── productController.js
-│   ├── models
-│   │   ├── categoryModel.js
-│   │   └── productModel.js
-│   ├── routes
-│   │   ├── categoryRoute.js
-│   │   └── productRoute.js
-│   ├── app.js
-│   └── config
-│       └── db.js
-├── package.json
-└── README.md
+# Contribuciones
+
+Si deseas contribuir a este proyecto, sigue estos pasos:
+
+Haz un fork del repositorio
+
+Crea una nueva rama (git checkout -b feature/nueva-funcionalidad)
+
+Realiza tus cambios y haz un commit (git commit -am 'Añadir nueva funcionalidad')
+
+Sube tus cambios a tu fork (git push origin feature/nueva-funcionalidad)
+Crea un pull request para que tus cambios sean revisados y fusionados.
