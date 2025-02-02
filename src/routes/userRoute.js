@@ -6,7 +6,7 @@ const router = express.Router();
 
 
 router.post("/", userController.createUser); 
-router.post("/login", userController.login);     
+router.post("/login", userController.login);  
 
 
 router.post("/category", authenticatejwt, categoryController.createCategory);  
