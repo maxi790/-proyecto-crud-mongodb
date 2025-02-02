@@ -85,6 +85,24 @@ DELETE /api/categories/:id: Eliminar una categoría
 
 # Ejemplos de Datos Mock para POST
 
+
+Cuando realizas un POST a la ruta /api/users, puedes enviar estos datos para crear un nuevo usuario.
+
+{
+
+  "username": "usuarioPrueba",
+
+  "password": "Contraseña123",
+
+  "email": "usuario@example.com"
+
+}
+
+
+
+
+
+
 Crear Producto (POST /api/products)
 
 json
